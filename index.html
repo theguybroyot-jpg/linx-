@@ -1,0 +1,136 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahoot! - Enter game PIN</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #46178f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 0 rgba(0,0,0,0.15);
+            letter-spacing: -1px;
+        }
+
+        .login-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            height: 48px;
+            padding: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            border: 2px solid #cccccc;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #333333;
+        }
+
+        input[type="text"]::placeholder {
+            color: #757575;
+            font-weight: 700;
+        }
+
+        button {
+            width: 100%;
+            height: 48px;
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #1a1a1a;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #1a1a1a;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="logo">Kahoot!</h1>
+
+        <div class="login-box">
+
+            <form id="pinForm" onsubmit="checkPin(event)">
+
+                <input
+                    type="text"
+                    id="gamePin"
+                    placeholder="Game PIN"
+                    maxlength="8"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">Enter</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <footer>
+        C
+```
