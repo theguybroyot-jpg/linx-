@@ -1,11 +1,9 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kahoot! - Enter game PIN</title>
-
     <style>
         * {
             box-sizing: border-box;
@@ -15,7 +13,7 @@
         }
 
         body {
-            background-color: #46178f;
+            background-color: #46178f; /* Classic Kahoot Purple */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -103,34 +101,51 @@
         }
     </style>
 </head>
-
 <body>
 
     <div class="container">
-
         <h1 class="logo">Kahoot!</h1>
-
+        
         <div class="login-box">
-
+            <!-- Form triggers the check when submitted -->
             <form id="pinForm" onsubmit="checkPin(event)">
-
-                <input
-                    type="text"
-                    id="gamePin"
-                    placeholder="Game PIN"
-                    maxlength="8"
+                <input 
+                    type="text" 
+                    id="gamePin" 
+                    placeholder="Game PIN" 
+                    maxlength="8" 
                     autocomplete="off"
                     required
                 >
-
                 <button type="submit">Enter</button>
-
             </form>
-
         </div>
-
     </div>
 
     <footer>
-        C
-```
+        Create your own Kahoot! for free at <a href="https://kahoot.com" target="_blank">kahoot.com</a>
+    </footer>
+
+    <script>
+        function checkPin(event) {
+            // Prevent the form from refreshing the page on click
+            event.preventDefault();
+            
+            const pinInput = document.getElementById('gamePin').value.trim();
+            const secretPin = "8472";
+            
+            if (pinInput === secretPin) {
+                // Option A: Open secret page in a NEW tab
+                window.open('http://kahoot.bot.nu/home', '_blank'); 
+                
+                // Option B: Redirect the CURRENT page instead (uncomment line below if you want this)
+                // window.location.href = 'https://google.com'; 
+            } else {
+                // If it's a normal PIN, you can add an error or custom message
+                alert("Check your PIN and try again.");
+            }
+        }
+    </script>
+
+</body>
+</html>
