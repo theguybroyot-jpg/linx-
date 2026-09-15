@@ -1,0 +1,165 @@
+Yep — here’s a complete page with:
+
+* An **embed area** where you can paste your embed URL
+* The exact placeholder **`(Right Here)`** showing where to put it
+* **Back to Home** button → `home.html`
+* **Fullscreen** button for the embed
+* Clean dark styling
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0b0b0f;
+            color: white;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .topbar {
+            height: 70px;
+            background: #111116;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid #292930;
+        }
+
+        .back-btn {
+            background: #6c3cff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background: #8057ff;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .fullscreen-btn {
+            background: #202027;
+            color: white;
+            border: 1px solid #3a3a44;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .fullscreen-btn:hover {
+            background: #30303a;
+        }
+
+        .embed-container {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 70px);
+            background: black;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .fullscreen-mode {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            background: black;
+        }
+
+        .fullscreen-mode iframe {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <button class="back-btn" onclick="goHome()">← Home</button>
+
+        <div class="title">
+            Hero Linx
+        </div>
+
+        <button class="fullscreen-btn" onclick="toggleFullscreen()">
+            ⛶ Fullscreen
+        </button>
+    </div>
+
+    <div class="embed-container" id="embedContainer">
+
+        <!-- PUT YOUR EMBED LINK RIGHT HERE -->
+        <iframe
+            id="embedFrame"
+            src="(https://petezahgames.com/)"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+    <script>
+        function goHome() {
+            window.location.href = "home.html";
+        }
+
+        function toggleFullscreen() {
+            const container = document.getElementById("embedContainer");
+
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        document.addEventListener("fullscreenchange", function() {
+            const button = document.querySelector(".fullscreen-btn");
+
+            if (document.fullscreenElement) {
+                button.textContent = "✕ Exit Fullscreen";
+            } else {
+                button.textContent = "⛶ Fullscreen";
+            }
+        });
+    </script>
+
+</body>
+</html>
+```
